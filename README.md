@@ -2,7 +2,7 @@
 
 [![npm](https://nodei.co/npm/uupaa.screenorientationevent.js.svg?downloads=true&stars=true)](https://nodei.co/npm/uupaa.screenorientationevent.js/)
 
-Screen orientaion handler.
+Screen orientation handler.
 
 This module made of [WebModule](https://github.com/uupaa/WebModule).
 
