@@ -15,16 +15,16 @@ This module made of [WebModule](https://github.com/uupaa/WebModule).
 
 |                       | ScreenOrientation.on | ScreenOrientation.lock |
 |-----------------------|----------------------|------------------------|
-| Chrome                | YES                  | YES                    |
-| Chrome for Android    | YES                  | YES                    |
-| Firefox for Android   | YES                  | YES                    |
-| Edge                  | YES                  | NO                     |
-| Mobile Safari         | YES                  | NO                     |
-| IE10                  | NO                   | NO                     |
-| IE11 (Windows 8.1)    | NO                   | NO                     |
-| IE11 (Windows 7)      | NO                   | NO                     |
-| Safari                | NO                   | NO                     |
-| Android Browser       | NO                   | NO                     |
+| Chrome                | :o:                  | :o:                    |
+| Chrome for Android    | :o:                  | :o:                    |
+| Firefox for Android   | :o:                  | :o:                    |
+| Edge                  | :o:                  | :o:                    |
+| Mobile Safari         | :o:                  | :x:                    |
+| IE10                  | :x:                  | :x:                    |
+| IE11 (Windows 8.1)    | :x:                  | :x:                    |
+| IE11 (Windows 7)      | :x:                  | :x:                    |
+| Safari                | :x:                  | :x:                    |
+| Android Browser       | :x:                  | :x:                    |
 
 ## Browser, NW.js and Electron
 
