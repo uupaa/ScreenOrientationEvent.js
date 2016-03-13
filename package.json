@@ -1,6 +1,6 @@
 {
   "name": "uupaa.screenorientationevent.js",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Screen orientaion change event dispatcher",
   "url": "https://github.com/uupaa/ScreenOrientationEvent.js",
   "keywords": ["ScreenOrientation", "orientation", "uupaa", "WebModule", "Unstable"],
@@ -54,8 +54,7 @@
       ]
     }
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {},
   "lib": "./lib/",
   "main": "./index.js",

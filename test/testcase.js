@@ -35,7 +35,9 @@ function testScreenOrientationEvent(test, pass, miss) {
 
     ScreenOrientationEvent.on(function(currentOrientation, eventType) {
         _setBodyColor(currentOrientation);
+        //test.done(pass());
     });
+
 /*
     var userAgent = new UserAgent();
     var eventType = ENABLE_ORIENTATION_API ? "change"    // API:    screen.orientation.addEventListener("change")
