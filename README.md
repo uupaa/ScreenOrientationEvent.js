@@ -2,7 +2,7 @@
 
 [![npm](https://nodei.co/npm/uupaa.screenorientationevent.js.svg?downloads=true&stars=true)](https://nodei.co/npm/uupaa.screenorientationevent.js/)
 
-Screen orientaion change event dispatcher
+Screen orientaion handler.
 
 This module made of [WebModule](https://github.com/uupaa/WebModule).
 
@@ -13,16 +13,18 @@ This module made of [WebModule](https://github.com/uupaa/WebModule).
 
 ## Browser compatibility
 
-|                       | ScreenOrientation API | window.orientation |
-|-----------------------|-----------------------|--------------------|
-| Chrome                | 38+                   | YES                |
-| Chrome for Android    | 39+                   | YES                |
-| Firefox for Android   | YES (prefixed)        | YES                |
-| IE (Windows 7)        | NO                    | ?                  |
-| IE (Windows 8.1)      | YES (prefixed)        | ?                  |
-| Edge                  | YES (prefixed)        | ?                  |
-| Safari                | NO                    | NO                 |
-| Mobile Safari         | NO                    | YES                |
+|                       | ScreenOrientation.on | ScreenOrientation.lock |
+|-----------------------|----------------------|------------------------|
+| Chrome                | YES                  | YES                    |
+| Chrome for Android    | YES                  | YES                    |
+| Firefox for Android   | YES                  | YES                    |
+| Edge                  | YES                  | NO                     |
+| Mobile Safari         | YES                  | NO                     |
+| IE10                  | NO                   | NO                     |
+| IE11 (Windows 8.1)    | NO                   | NO                     |
+| IE11 (Windows 7)      | NO                   | NO                     |
+| Safari                | NO                   | NO                     |
+| Android Browser       | NO                   | NO                     |
 
 ## Browser, NW.js and Electron
 

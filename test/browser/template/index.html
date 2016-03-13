@@ -14,11 +14,6 @@ __WMTOOLS__
 __SOURCES__
 __TEST_CASE__
 
-<p>ipsum</p>
-<p>ipsum</p>
-<p>ipsum</p>
-<p>ipsum</p>
-
 <p>Rotate device to change background color.</p>
 
 <ul>
@@ -27,6 +22,46 @@ __TEST_CASE__
   <li><span style="color:green">green</span> is rotate 180 (portrait)</li>
   <li><span style="color:blue">blue</span> is rotate 270 (landscape)</li>
 </ul>
+
+<input type="button" value="lock" onclick="_lockScreen()" />
+<input type="button" value="unlock" onclick="_unlockScreen()" />
+
+<script>
+function _lockScreen() {
+    if (ScreenOrientationEvent.enable) {
+        _requestFullscreen(document.body);
+        ScreenOrientationEvent.lock("portrait");
+    }
+}
+function _unlockScreen() {
+    if (ScreenOrientationEvent.enable) {
+        ScreenOrientationEvent.unlock();
+        _exitFullscreen(document);
+    }
+}
+function _requestFullscreen(node) {
+    if ("requestFullscreen" in node) {
+        node.requestFullscreen();
+    } else if ("webkitRequestFullScreen" in node) {
+        node.webkitRequestFullScreen();
+    } else if ("mozRequestFullScreen" in node) {
+        node.mozRequestFullScreen();
+    } else if ("msRequestFullscreen" in node) {
+        node.msRequestFullscreen();
+    }
+}
+function _exitFullscreen(node) {
+    if ("exitFullscreen" in node) {
+        node.exitFullscreen();
+    } else if ("webkitExitFullscreen" in node) {
+        node.webkitExitFullscreen();
+    } else if ("mozCancelFullScreen" in node) {
+        node.mozCancelFullScreen();
+    } else if ("msExitFullscreen" in node) {
+        node.msExitFullscreen();
+    }
+}
+</script>
 
 </body></html>
 
