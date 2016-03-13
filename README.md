@@ -59,19 +59,4 @@ function _setBodyColor(orientation) {
 </script>
 ```
 
-## WebWorkers
-
-```js
-importScripts("<module-dir>lib/WebModule.js");
-importScripts("<module-dir>lib/ScreenOrientationEvent.js");
-
-```
-
-## Node.js
-
-```js
-require("<module-dir>lib/WebModule.js");
-require("<module-dir>lib/ScreenOrientationEvent.js");
-
-```
 
