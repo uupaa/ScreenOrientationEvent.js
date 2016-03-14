@@ -1,9 +1,9 @@
 {
   "name": "uupaa.screenorientationevent.js",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "Screen orientation handler.",
   "url": "https://github.com/uupaa/ScreenOrientationEvent.js",
-  "keywords": ["ScreenOrientation", "orientation", "uupaa", "WebModule", "Unstable"],
+  "keywords": ["ScreenOrientation", "orientation", "uupaa", "WebModule"],
   "repository": {
     "type": "git",
     "url": "https://github.com/uupaa/ScreenOrientationEvent.js.git"
