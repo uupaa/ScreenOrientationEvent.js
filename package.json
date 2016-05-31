@@ -1,6 +1,6 @@
 {
   "name": "uupaa.screenorientationevent.js",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Screen orientation handler.",
   "url": "https://github.com/uupaa/ScreenOrientationEvent.js",
   "keywords": ["ScreenOrientation", "orientation", "uupaa", "WebModule"],
@@ -38,18 +38,27 @@
     "browser": {
       "output": "release/ScreenOrientationEvent.b.min.js",
       "source": [
+        "lib/ScreenOrientationEvent2015.js",
+        "lib/ScreenOrientationEvent2014.js",
+        "lib/ScreenOrientationEvent2010.js",
         "lib/ScreenOrientationEvent.js"
       ]
     },
     "nw": {
       "output": "release/ScreenOrientationEvent.nw.min.js",
       "source": [
+        "lib/ScreenOrientationEvent2015.js",
+        "lib/ScreenOrientationEvent2014.js",
+        "lib/ScreenOrientationEvent2010.js",
         "lib/ScreenOrientationEvent.js"
       ]
     },
     "el": {
       "output": "release/ScreenOrientationEvent.el.min.js",
       "source": [
+        "lib/ScreenOrientationEvent2015.js",
+        "lib/ScreenOrientationEvent2014.js",
+        "lib/ScreenOrientationEvent2010.js",
         "lib/ScreenOrientationEvent.js"
       ]
     }

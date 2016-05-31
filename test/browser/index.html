@@ -4,50 +4,115 @@
 
 <script src="../../lib/WebModule.js"></script>
 <script>
-WebModule.verify  = true;
-WebModule.verbose = true;
-WebModule.publish = true;
+WebModule.VERIFY  = true;
+WebModule.VERBOSE = true;
+WebModule.PUBLISH = true;
 </script>
 
 
 <script src="../wmtools.js"></script>
+<script src="../../lib/ScreenOrientationEvent2015.js"></script>
+<script src="../../lib/ScreenOrientationEvent2014.js"></script>
+<script src="../../lib/ScreenOrientationEvent2010.js"></script>
 <script src="../../lib/ScreenOrientationEvent.js"></script>
 <script src="../testcase.js"></script>
 
-<p>Rotate device to change background color.</p>
+<p class="rotate">Rotate device to change background color.</p>
 
 <ul>
-  <li>white is rotate 0 (natural, portrait)</li>
-  <li><span style="color:red">red</span> is rotate 90 (landscape)</li>
-  <li><span style="color:green">green</span> is rotate 180 (portrait)</li>
-  <li><span style="color:blue">blue</span> is rotate 270 (landscape)</li>
+  <li class="rotate">white is rotate 0 (natural, portrait)</li>
+  <li class="rotate"><span style="color:red">red</span> is rotate 90 (landscape)</li>
+  <li class="rotate"><span style="color:green">green</span> is rotate 180 (portrait)</li>
+  <li class="rotate"><span style="color:blue">blue</span> is rotate 270 (landscape)</li>
 </ul>
 
-<input type="button" value="lock" onclick="_lockScreen()" />
-<input type="button" value="unlock" onclick="_unlockScreen()" />
+<input type="button" class="lock" value="lock"   onclick="_lockScreen()" />
+<input type="button" class="lock" value="unlock" onclick="_unlockScreen()" />
+<input type="button" class="fullscreen" value="enter fullscreen" onclick="_requestFullscreen(document.body)" />
+<input type="button" class="fullscreen" value="exit fullscreen" onclick="_exitFullscreen(document)" />
 
 <script>
-function _lockScreen() {
+window.onload = function() {
+    if (ScreenOrientationEvent2015.enable) {
+        document.body.innerHTML += "<p>ScreenOrientationEvent2015.enable = true</p>";
+    } else if (ScreenOrientationEvent2014.enable) {
+        document.body.innerHTML += "<p>ScreenOrientationEvent2014.enable = true</p>";
+    } else if (ScreenOrientationEvent2010.enable) {
+        document.body.innerHTML += "<p>ScreenOrientationEvent2010.enable = true</p>";
+    }
+    if (ScreenOrientationEvent2015.enableLock) {
+        document.body.innerHTML += "<p>ScreenOrientationEvent2015.enableLock = true</p>";
+    } else if (ScreenOrientationEvent2014.enableLock) {
+        document.body.innerHTML += "<p>ScreenOrientationEvent2014.enableLock = true</p>";
+    } else if (ScreenOrientationEvent2010.enableLock) {
+        document.body.innerHTML += "<p>ScreenOrientationEvent2010.enableLock = true</p>";
+    }
+
     if (ScreenOrientationEvent.enable) {
-        _requestFullscreen(document.body);
-        ScreenOrientationEvent.lock("portrait");
+        _setBodyColor(ScreenOrientationEvent.orientation());
+
+        ScreenOrientationEvent.on(function(currentOrientation, eventType) {
+            _setBodyColor(currentOrientation);
+        });
+    }
+
+    if (!ScreenOrientationEvent.enable) {
+        var nodeList = document.querySelectorAll(".rotate");
+        [].slice.call(nodeList).forEach(function(node) {
+            node.style.color = "gray";
+        });
+    }
+    if (!ScreenOrientationEvent.enableLock) {
+        var nodeList = document.querySelectorAll(".lock");
+        [].slice.call(nodeList).forEach(function(node) {
+            node.disabled = true;
+        });
     }
 }
-function _unlockScreen() {
-    if (ScreenOrientationEvent.enable) {
+
+function _setBodyColor(orientation) {
+    var color = "white";
+    switch (orientation) {
+    case   0: color = "skyblue"; break;
+    case  90: color = "lime";    break;
+    case 180: color = "green";   break;
+    case 270: color = "blue";    break;
+    }
+    document.body.style.backgroundColor = color;
+}
+
+function _lockScreen(event) {
+    if (ScreenOrientationEvent.enableLock) {
+        _requestFullscreen(document.body);
+
+        ScreenOrientationEvent.lock("portrait", function() {
+            document.body.style.backgroundColor = "tomato";
+        }, function(error) {
+            document.body.style.backgroundColor = "red";
+        });
+    }
+}
+function _unlockScreen(event) {
+    if (ScreenOrientationEvent.enableLock) {
         ScreenOrientationEvent.unlock();
+
         _exitFullscreen(document);
+        document.body.style.backgroundColor = "white";
     }
 }
 function _requestFullscreen(node) {
-    if ("requestFullscreen" in node) {
-        node.requestFullscreen();
-    } else if ("webkitRequestFullScreen" in node) {
-        node.webkitRequestFullScreen();
-    } else if ("mozRequestFullScreen" in node) {
-        node.mozRequestFullScreen();
-    } else if ("msRequestFullscreen" in node) {
-        node.msRequestFullscreen();
+    try {
+        if ("requestFullscreen" in node) {
+            node.requestFullscreen();
+        } else if ("webkitRequestFullScreen" in node) {
+            node.webkitRequestFullScreen();
+        } else if ("mozRequestFullScreen" in node) {
+            node.mozRequestFullScreen();
+        } else if ("msRequestFullscreen" in node) {
+            node.msRequestFullscreen();
+        }
+    } catch (error) {
+        alert("failed requestFullscreen()");
     }
 }
 function _exitFullscreen(node) {
